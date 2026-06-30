@@ -175,6 +175,10 @@ int[][] graph = {
 };
 ```
 
+<img width="688" height="483" alt="image" src="https://github.com/user-attachments/assets/9c4ddf48-ba2b-43da-bb66-104367778da3" />
+
+
+
 ### Advantages
 
 * Easy edge lookup.
@@ -236,6 +240,7 @@ adj.get(2).add(1);
 adj.get(2).add(3);
 adj.get(3).add(2);
 ```
+<img width="684" height="564" alt="image" src="https://github.com/user-attachments/assets/e76b810b-8646-4213-9047-f6d0bce8588a" />
 
 ### Advantages
 

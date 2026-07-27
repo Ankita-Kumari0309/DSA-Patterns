@@ -32,3 +32,17 @@ class Main
         
     }
 }
+
+
+
+
+
+
+## Time Complexity
+Creating the matrix: O(V²)
+Reading E edges: O(E)
+
+Overall: O(V² + E)
+
+## Space Complexity
+Adjacency Matrix: O(V²)

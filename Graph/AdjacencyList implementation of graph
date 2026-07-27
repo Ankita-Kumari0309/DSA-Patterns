@@ -1,0 +1,62 @@
+import java.util.*;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the no of vertices");
+        int V = sc.nextInt();
+        System.out.println("Enter the no of edges");
+        int E = sc.nextInt();
+        
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        for(int i = 0;i<V;i++)
+        {
+            adj.add(new ArrayList<>());
+        }
+        for(int i = 0;i<E;i++)
+        {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            adj.get(u).add(v);
+            adj.get(v).add(u);
+        }
+        //print the graph
+        for(int i =0;i<V;i++)
+        {
+            System.out.println(i +"->"+adj.get(i));
+        }
+    }
+}
+
+
+
+
+
+## Output : 
+
+Enter the no of vertices
+5
+Enter the no of edges
+5
+0 1
+0 2
+1 2
+2 3
+3 4
+0->[1, 2]
+1->[0, 2]
+2->[0, 1, 3]
+3->[2, 4]
+4->[3]
+
+
+
+
+
+
+## Time Complexity : O(V) - creating empty lists 
+                     O(E) - reading edges
+                     so overall O(V+E)
+
+## Space Complexity - O(V+E)

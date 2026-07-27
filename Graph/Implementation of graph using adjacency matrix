@@ -1,0 +1,34 @@
+import java.util.*;
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        //Read input no of vertices
+        System.out.println("Enter no of vertices ");
+        int V = sc.nextInt();
+        System.out.println("Enter the no of edges");
+        int e = sc.nextInt();
+        
+        int[][] matrix = new int[V][V];
+        //enter edges
+        for(int i = 0;i<e;i++)
+        {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            matrix[u][v] = 1;
+            matrix[v][u] = 1;
+        }
+        //print the matrix
+        System.out.println("The adjacency matrix is:");
+        for(int i = 0;i<V;i++)
+        {
+            for(int j = 0;j<V;j++)
+            {
+                System.out.println(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+        
+    }
+}

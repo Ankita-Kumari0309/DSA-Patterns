@@ -1,0 +1,91 @@
+import java.util.*;
+class Main
+{
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the no of vertices");
+		int V = sc.nextInt();
+		System.out.println("Enter the no of edges");
+		int E = sc.nextInt();
+		
+		ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+		
+		for(int i = 0;i<V;i++)
+		{
+			adj.add(new ArrayList<>());
+		}
+		
+		for(int i =0;i<E;i++)
+		{
+			int u = sc.nextInt();
+			int v = sc.nextInt(); 
+			adj.get(u).add(v);
+		        adj.get(v).add(u);	
+		}
+		System.out.println("The graph is:");
+		for(int i = 0;i<V;i++)
+		{
+			System.out.println(i + "->" + adj.get(i));
+			
+		}
+		System.out.println("The DFS graph traversal is:");
+		boolean[] visited = new boolean[V]; 
+		for(int i = 0;i<V;i++)
+		{
+			 if(!visited[i])
+			 dfs(adj,i,visited);
+		}
+	}
+	public static void dfs(ArrayList<ArrayList<Integer>> adj,int Source,boolean[] visited)
+	{
+		visited[Source] = true;
+		System.out.println(Source +" ");
+		for(int neigh : adj.get(Source))
+		{
+			
+			if(!visited[neigh])
+			{
+				dfs(adj,neigh,visited);
+			}
+		}
+	}
+}
+		
+
+## Output - 
+Enter the no of vertices
+5
+Enter the no of edges
+4
+0 1
+0 2
+1 3
+2 4
+The graph is:
+0->[1, 2]
+1->[0, 3]
+2->[0, 4]
+3->[1]
+4->[2]
+The DFS graph traversal is:
+0 
+1 
+3 
+2 
+4 
+
+
+
+
+
+
+
+
+
+
+
+## Time Complexity - Each vertex is visted by once ao O(V) and edge is traversed once so total time complexity is O(V+E)
+## Space Complexity - O(V+E) - Adjacncy list
+                      O(V) - visited array
+                      O(V) - Recurssion stack  but total auxillary space is stack and array so O(V) but including graph it will be O(V+E)

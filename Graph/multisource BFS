@@ -1,0 +1,112 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main 
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter no of vertices:");
+        int V = sc.nextInt();
+        System.out.println("Enter no of edges:");
+        int E = sc.nextInt();
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+        for(int i = 0;i<V;i++)
+        {
+            adj.add(new ArrayList<>());
+        }
+        for(int i =0;i<E;i++)
+        {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            adj.get(u).add(v);
+            adj.get(v).add(u);
+        }
+        System.out.println("Enter  no of sources");
+        int s = sc.nextInt();
+        System.out.println("Enter tha all sources");
+        int[] sources = new int[s];
+        for(int i =0;i<s;i++)
+        {
+            sources[i] = sc.nextInt();
+        }
+        int[] dist = new int[V];
+        multisourceBFS(adj,dist,sources,V);
+    }
+    public static void multisourceBFS(ArrayList<ArrayList<Integer>> adj, int[] dist,int[] sources,int V)
+    {
+        Queue<Integer> q = new LinkedList<>();
+        Arrays.fill(dist,-1);
+        for(int i =0 ;i<sources.length;i++)
+        {
+            q.offer(sources[i]);
+            dist[sources[i]] = 0;// from sources the distance will be 0
+        }
+        while(!q.isEmpty())
+        {
+            int node = q.poll();
+            for(int neigh : adj.get(node))
+            {
+                if(dist[neigh] == -1)
+                {
+                    q.offer(neigh);
+                    dist[neigh] = dist[node]+1;
+                }
+            }
+        }
+        System.out.println("The shortes pathe from nodes");
+        for(int i =0;i<V;i++)
+        {
+            System.out.println("Node "+i+"->"+dist[i]);
+        }
+    }
+}
+
+## output 
+Enter no of edges:
+5
+0 1
+1 2
+0 3
+1 4
+3 4
+Enter  no of sources
+3
+Enter tha all sources
+0
+5
+3
+The shortes pathe from nodes
+Node 0->0
+Node 1->1
+Node 2->2
+Node 3->0
+Node 4->1
+Node 5->0
+
+
+
+
+
+
+
+
+
+
+## Time Complexity - O(V+E)
+O(V) - distance array
+O(K) - adding k no of sources
+O(V+E) - BFS travesal adding in queue
+
+## Space complexity-
+counting only the algorithm's extra (auxiliary) space:
+Queue → O(V)
+Distance array → O(V)
+
+Total: O(V)
+If counting the graph storage as well:
+Adjacency List : O(V + E)
+Distance Array : O(V)
+Queue          : O(V)
+
+Total = O(V + E)

@@ -1,5 +1,5 @@
-## Problrm No - https://leetcode.com/problems/surrounded-regions/
-
+## Problem - https://leetcode.com/problems/surrounded-regions/
+Boundary BFS - top ,down, left and right BFS
 
 ```
 class Solution 
